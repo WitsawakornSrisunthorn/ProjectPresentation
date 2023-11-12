@@ -1,0 +1,49 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  form {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .error {
+    color: red;
+  }
+  

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% if messages %}
+   <ul class="messages">
+       {% for message in messages %}
+           <li class="{{ message.tags }}">{{ message }}</li>
+       {% endfor %}
+   </ul>
+{% endif %}
+
+{% block title %}
+   <title>เข้าสู่ระบบ</title>
+{% endblock %}
+
+{% block content %}
+   <section class="container">
+       <h2 class="center">เข้าสู่ระบบ</h2>
+
+       <div class="form-container">
+           {% if messages %}
+               <ul class="messages">
+                   {% for message in messages %}
+                       <li>{{ message }}</li>
+                   {% endfor %}
+               </ul>
+           {% endif %}
+
+           <form method="post" action="{% url 'login' %}">
+               {% csrf_token %}
+               <div class="form-group">
+                   <label for="username">ชื่อผู้ใช้:</label>
+                   <input type="text" name="username" required class="form-control">
+               </div>
+               <div class="form-group">
+                   <label for="password">รหัสผ่าน:</label>
+                   <input type="password" name="password" required class="form-control">
+               </div>
+               <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+
+               {% if error %}
+                   <div class="alert alert-danger" role="alert">
+                       <strong>รหัสผ่านไม่ถูกต้อง</strong>
+                   </div>
+               {% endif %}
+           </form>
+       </div>
+   </section>
+{% endblock %}

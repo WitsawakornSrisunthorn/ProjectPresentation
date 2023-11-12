@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #343a40;
+            color: #ffffff; /* เปลี่ยนสีข้อความเป็นขาว */
+        }
+
+        .navbar {
+            background-color: rgba(75, 202, 50, 0.075);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #adb5bd;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .container {
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* เพิ่มสไตล์ให้กับส่วน "เกี่ยวกับเรา" */
+        .about-section {
+            text-align: center;
+            padding: 5px;
+            .navbar {
+            background-color: #ccc;
+            color: #fff;
+            border: none;
+}
+
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .about-section h5 {
+            color: #000000; /* เปลี่ยนสีของตัวหัวข้อให้เป็นสีน้ำเงิน */
+        }
+
+        .about-section p {
+            font-size: 1.0rem;
+        }
+
+        .about-section a {
+            color: #ffffff;
+        }
+
+        .about-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    {% block title %}
+    {% endblock %}
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Pa-Ti-Sil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fas fa-search"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">หน้าแรก</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/form">อัพเดตปฏิทิน</a>
+                    </li>
+    
+
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+<!-- Navbar ภายใน <form> tag -->
+    <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'search' %}">
+        {% csrf_token %}
+        {{ search_form }}
+        <button class="btn btn-dark btn-outline-light my-2 my-sm-0" type="submit">ค้นหา</button>
+    </form>
+    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">เข้าสู่ระบบ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">ลงทะเบียน</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <div class="container mb-2">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Navbar ที่สอง -->
+    <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark position-fixed bottom-0 z-index-9999">
+      <div class="container-fluid">
+          <div class="container d-flex justify-content-center align-items-center">
+              <div class="row">
+                  <div class="center col l6 s12 about-section">
+                    <h5>  <span class="badge bg-secondary">About</h5>
+                      <p class="text-center">
+                          เว็บไซต์นี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรวิศวกรรมศาสตร์บัณฑิต
+                          สาขาวิชาวิศวกรรมอิเล็กทรอนิกส์และระบบคอมพิวเตอร์
+                          ภาควิชาวิศวกรรมไฟฟ้าคณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม
+                          มหาวิทยาลัยศิลปากร
+                          ปีการศึกษา ๒๕๖๖
+                      </p>
+                      <li class="nav-item">
+                        <a href="/about" class="btn btn-outline-light">สมาชิก</a>
+                      </li>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+<script>
+window.onscroll = function() {
+if (window.scrollY >= 1000) {
+  document.querySelector(".navbar.fixed-bottom").style.visibility = "visible";
+} else {
+  document.querySelector(".navbar.fixed-bottom").style.visibility = "hidden";
+}
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyowThqFqY0E3z50F5LDAf3bvuHvKlEIl" crossorigin="anonymous"></script>
+</body>
+</html>

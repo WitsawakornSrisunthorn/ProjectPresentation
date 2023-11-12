@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>ผลลัพธ์การค้นหา</title>
+{% endblock %}
+
+{% block content %}
+    ผลลัพธ์การค้นหา
+</h2>
+
+    <form method="get" action="{% url 'search' %}">
+        {{ search_form }}
+        <button type="submit" class="btn btn-primary btn-yellow float-right">ค้นหา</button>
+    </form>
+
+    {% if results %}
+<div class="results">
+    <ul class="list-unstyled mt-5 mb-5">
+        {% for item in results %}
+            <li class="result">
+                <h3 class="text-blue">
+                    <i class="far fa-calendar-alt"></i> {{ item.name }}
+                </h3>
+                <p class="text-muted">{{ item.age }}</p>
+            </li>
+            <div class="mt-5 mb-5"></div>
+        {% endfor %}
+    </ul>
+</div>
+
+        </div>
+    {% else %}
+    <p class="text-center text-danger mt-10 mb-10">ไม่พบผลลัพธ์</p>
+    {% endif %}
+{% endblock %}
